@@ -1,0 +1,90 @@
+.profile_pic{
+    width:100%;
+    height: auto;
+    margin: 20% 0% 0% 5%;
+    padding: 0%;
+    float: right;
+}
+
+
+.search_bar{
+    margin: 15% 15% 5% 15%;
+}
+
+.fields{
+    width: 60%;
+    margin: 5% 20% 20% 20%;
+    text-align: center;
+
+}
+
+.se{
+    text-align: center;
+    padding: 10% 0 10% 0;
+    border: solid;
+    margin-top: .5%;
+
+}
+
+.cyber{
+    text-align: center;
+    padding: 10% 0 10% 0;
+    border: solid;
+    margin-top: .5%;
+
+}
+
+.blockchain{
+    text-align: center;
+    padding: 10% 0 10% 0;
+    border: solid;
+    margin-top: .5%;
+
+}
+
+.ai{
+    text-align: center;
+    padding: 10% 0 10% 0;
+    border: solid;
+    margin-top: .5%;
+
+}
+
+.cs{
+    text-align: center;
+    padding: 10% 0 10% 0;
+    border: solid;
+    margin-top: .5%;
+
+}
+
+.add_content {
+    position: fixed;
+    right: 0px; bottom: 0px;
+    padding: 3%;
+  }
+
+#add_icon{
+    color: black;
+}
+
+/* .search_box{
+    margin: 15% 15% 0% 15%;
+} */
+
+/* body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+  }
+  
+  main {
+    flex: 1 0 auto;
+  } */
+/*   
+  footer.page-footer {
+    padding-top: 0;
+    text-align: right;
+    height: 3vw;
+
+  } */
