@@ -11,7 +11,7 @@ class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     role = models.CharField(max_length=100)
     interest = models.TextField(max_length=250)
-    comments = models.TextField
+    rate = models.FloatField
 
     def __str__(self):
         return self.user.username
@@ -24,13 +24,13 @@ def create_user_profile(sender, instance, created, **kwargs):
 
 
 class Post(models.Model):
-    topic = models.TextField(max_length=200, blank=True,
+    topic = models.CharField(max_length=200, blank=True,
                              null=True, editable=True)
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
-    post_content = models.TextField
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    lesson = models.TextField(blank=True, null=True, editable=True)
     profile = models.ForeignKey(
         Profile, on_delete=models.CASCADE, blank=True, null=True, default='', editable=True)
-    upvotes = models.IntegerField
+    upvotes = models.IntegerField(blank=True, null=True, editable=True)
     downvotes = models.IntegerField(blank=True, null=True, editable=True)
     updates = models.TextField(blank=True, null=True, editable=True)
 
@@ -52,11 +52,11 @@ class downvoted_posts(models.Model):
 
 class Comment(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, default='')
-    feedback = models.TextField
+    feedback = models.TextField(blank=True, null=True, editable=True)
     profile = models.ForeignKey(
         Profile, on_delete=models.CASCADE, blank=True, null=True, default='',  editable=True)
-    upvotes = models.IntegerField
-    downvotes = models.IntegerField
+    upvotes = models.IntegerField(blank=True, null=True, editable=True)
+    downvotes = models.IntegerField(blank=True, null=True, editable=True)
     Post = models.ForeignKey(
         Post, on_delete=models.CASCADE, blank=True, null=True, default='',  editable=True)
 

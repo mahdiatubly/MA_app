@@ -25,29 +25,36 @@
       <a href="#" class="brand-logo">M....</a>
       <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
       <ul id="nav-mobile" class="right">
-        <li > <a class='dropdown-trigger btn' href='#' data-target='dropdown1'><i class="large material-icons">person</i></a></li>
+        <li > <a class='dropdown-trigger btn' data-target='dropdown1'><i class="large material-icons">person</i></a></li>
       </ul>
     </div>
-
-    <ul id='dropdown1' class='dropdown-content'>
-        <li><a href="#!">one</a></li>
-        <li><a href="#!">two</a></li>
-    </ul>
+    
+        
+        <ul id='dropdown1' class='dropdown-content'>
+    {% if user.is_authenticated %}
+            <li><a href="#!">Profile</a></li>
+            <li><a href="#!">Saved Lessons</a></li>
+            <li><a href="signout/">SignOut</a></li>
+    {% else %}
+            <li><a href="#!">SignIn</a></li>
+    {% endif %}
+        </ul>
 
     <div class="nav-content">
       <ul class="tabs tabs-transparent">
         <li class="tab"><a href="/">Home</a></li>
         <li class="tab"><a class="active" href="/signup/">SignUp</a></li>
         <li class="tab"><a href="/signin/">SignIn</a></li>
+        <li class="tab"><a href="signout/">SignOut</a></li>
       </ul>
     </div>
   </nav>
 
-  <ul class="sidenav" id="mobile-demo">
+  <!-- <ul class="sidenav" id="mobile-demo">
     <li><a href="sass.html">Sass</a></li>
     <li><a href="badges.html">Components</a></li>
     <li><a href="collapsible.html">JavaScript</a></li>
-  </ul>
+  </ul> -->
 
   <div id="test1" class="col s12">Test 1</div>
   <div id="test2" class="col s12">Test 2</div>
@@ -59,10 +66,16 @@
     {% block content %}
     {% endblock %}
   </main>
+  {% if user.is_authenticated %}
   <div class="add_content">
     <a href="/add"><i class="large material-icons" id="add_icon">add_circle</i></a>
   </div>
-  
+  {% else %}
+  <div class="add_content">
+    <a href="/signin"><i class="large material-icons" id="add_icon">add_circle</i></a>
+  </div>
+  {% endif %}
+
   <footer class="page-footer">
     <div class="container">
       <div class="row">

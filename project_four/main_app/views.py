@@ -4,7 +4,7 @@ from django.views.generic.edit import CreateView
 from django.views.generic import ListView
 from django.contrib.auth.models import User
 from django.contrib import auth
-from .models import Post
+from .models import Post, Profile, Comment
 from .forms import PostForm
 # from .models import User
 
@@ -28,12 +28,16 @@ def se(request):
 
 class PostCreate(CreateView):
     model = Post
-    fields = '__all__'
-    success_url = 'add/'
+    fields = ['topic', 'lesson']
+    success_url = '/'
 
     def form_valid(self, form):
         # Assign the logged in user
-        form.instance.user_id = self.kwargs.get('pk')
+        form.instance.upvotes = 0
+        form.instance.downvotes = 0
+        form.instance.updates = ''
+        form.instance.user = self.request.user
+        form.instance.profile = Profile.objects.get(user=self.request.user)
         return super(PostCreate, self).form_valid(form)
 
 
