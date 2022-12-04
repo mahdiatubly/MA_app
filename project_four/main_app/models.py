@@ -6,6 +6,9 @@ from django.contrib.auth.models import User
 from django.dispatch import receiver
 from django.db.models.signals import post_save
 
+levels = (('Select', 's'), ('Beginner', 'b'),
+          ('Intermediate', 'i'), ('Advance', 'a'))
+
 
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
@@ -24,9 +27,14 @@ def create_user_profile(sender, instance, created, **kwargs):
 
 
 class Post(models.Model):
-    topic = models.CharField(max_length=200, blank=True,
-                             null=True, editable=True)
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    field = models.CharField(
+        max_length=200, editable=True, default='General', blank=True, null=True)
+    topic = models.CharField(
+        max_length=200, editable=True, default='General', blank=True, null=True)
+    user = models.ForeignKey(
+        User, on_delete=models.CASCADE, editable=True, blank=True, null=True)
+    level = models.CharField(
+        max_length=200, editable=True, default='Beginner', blank=True, null=True)
     lesson = models.TextField(blank=True, null=True, editable=True)
     profile = models.ForeignKey(
         Profile, on_delete=models.CASCADE, blank=True, null=True, default='', editable=True)

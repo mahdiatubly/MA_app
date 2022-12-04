@@ -28,7 +28,7 @@ def se(request):
 
 class PostCreate(CreateView):
     model = Post
-    fields = ['topic', 'lesson']
+    fields = ['field', 'topic', 'level', 'lesson']
     success_url = '/'
 
     def form_valid(self, form):
@@ -50,7 +50,7 @@ def signup(request):
         last_name = request.POST["last_name"]
         username = request.POST["username"]
         password = request.POST["password"]
-        email = request.POST["password"]
+        email = request.POST["email"]
         try:
             user = User.objects.create_user(
                 first_name=first_name, last_name=last_name, username=username,
@@ -80,3 +80,39 @@ def signin(request):
 def signout(request):
     auth.logout(request)
     return redirect('/')
+
+
+def get_se_content_bg(request):
+    try:
+        se_content = Post.objects.filter(
+            field='Software Engineering', level='Beginner')
+    except:
+        se_content = 'New Content will be added soon'
+    return render(request, 'se_levels.html', {'content': se_content})
+
+
+def get_se_content_md(request):
+    try:
+        se_content = Post.objects.filter(
+            field='Software Engineering', level='Intermediate')
+    except:
+        se_content = 'New Content will be added soon'
+    return render(request, 'se_levels.html', {'content': se_content})
+
+
+def get_se_content_ad(request):
+    try:
+        se_content = Post.objects.filter(
+            field='Software Engineering', level='Advance')
+    except:
+        se_content = 'New Content will be added soon'
+    return render(request, 'se_levels.html', {'content': se_content})
+
+
+def lesson(request, pk):
+    try:
+        lesson = Post.objects.get(
+            id=pk)
+    except:
+        lesson = 'We are working on making this lesson available as soon as possible'
+    return render(request, 'lesson.html', {'lesson': lesson})

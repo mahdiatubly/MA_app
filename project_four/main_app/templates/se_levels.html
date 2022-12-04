@@ -27,11 +27,15 @@
             </div>
         </nav>
     </div>
-    <div class="fields">
-        <a href="{% url 'se_1' %}"><div class="se">Beginner</div></a>
-        <a href="{% url 'se_2' %}"><div class="cyber">Intermediate</div></a>
-        <a href="{% url 'se_3' %}"><div class="ai">Advance</div></a>
-    </div>
+    {% for lesson in content %}
+            <div class="lessons">
+                <a href="{% url 'lesson' lesson.id %}"><div class="lesson">
+                    <span class="auth">{{ lesson.user.username }}</span><br>
+                    <span class="title">{{ lesson.topic }}</span><br>
+                    <button class="less_intro">Start The Lesson</button>
+                </div> </a>
+            </div>
+    {% endfor %}
 </body>
 </html>
 {% endblock %}
