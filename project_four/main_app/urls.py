@@ -1,8 +1,8 @@
-from django.urls import path, include
+from django.urls import path
 from . import views
-from .views import PostCreate
-from django.conf.urls import url
-from . import views
+# from .views import PostCreate
+# from django.conf.urls import url
+# from . import views
 
 
 urlpatterns = [

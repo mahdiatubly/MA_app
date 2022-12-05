@@ -1,10 +1,10 @@
-.profile_pic{
+/* .profile_pic{
     width:100%;
     height: auto;
     margin: 20% 0% 0% 5%;
     padding: 0%;
     float: right;
-}
+} */
 
 
 .search_bar{
@@ -20,12 +20,21 @@
 
 .se{
     text-align: center;
-    padding: 10% 0 10% 0;
+    padding: 10% 0 20% 0;
     border: solid;
     margin-top: .5%;
 
 }
 
+.nav {
+display: inline;
+list-style: none;
+margin: 0px 20px;
+bottom: 89.26%;
+
+border: 2.16px solid #f6f4f5;
+
+}
 .cyber{
     text-align: center;
     padding: 10% 0 10% 0;
@@ -65,7 +74,12 @@
   }
 
 #add_icon{
-    color: black;
+    color: rgb(243, 8, 8);
+    margin: auto;
+} 
+
+button{
+    background-color: aqua;
 }
 
 /* .search_box{
@@ -88,3 +102,8 @@
     height: 3vw;
 
   } */
+/* 
+.ul{
+    color:yellowgreen;
+}
+
