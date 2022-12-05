@@ -1,10 +1,11 @@
 from django.shortcuts import render, redirect
 # Add the following import
-from django.views.generic.edit import CreateView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic import ListView
 from django.contrib.auth.models import User
 from django.contrib import auth
-from .models import Post, Profile, Comment
+from .models import Post, Profile, Comment, Room, Topic, Message
+from django.db.models import Q
 from .forms import PostForm
 # from .models import User
 
@@ -39,6 +40,18 @@ class PostCreate(CreateView):
         form.instance.user = self.request.user
         form.instance.profile = Profile.objects.get(user=self.request.user)
         return super(PostCreate, self).form_valid(form)
+
+
+class PostUpdate(UpdateView):
+    model = Post
+    fields = ['field', 'topic', 'level', 'lesson']
+    success_url = '/'
+
+
+class PostDelete(DeleteView):
+    model = Post
+    fields = ['field', 'topic', 'level', 'lesson']
+    success_url = 'home'
 
 
 def signup(request):
@@ -116,3 +129,43 @@ def lesson(request, pk):
     except:
         lesson = 'We are working on making this lesson available as soon as possible'
     return render(request, 'lesson.html', {'lesson': lesson})
+
+
+### -------------------------------###-----------------------------------###
+
+def chatting_home(request):
+    q = request.GET.get('q') if request.GET.get('q') != None else ''
+
+    rooms = Room.objects.filter(
+        Q(topic__name__icontains=q) |
+        Q(name__icontains=q) |
+        Q(description__icontains=q)
+    )
+
+    topics = Topic.objects.all()[0:5]
+    room_count = rooms.count()
+    room_messages = Message.objects.filter(
+        Q(room__topic__name__icontains=q))[0:3]
+
+    context = {'rooms': rooms, 'topics': topics,
+               'room_count': room_count, 'room_messages': room_messages}
+    return render(request, 'main_app/chatting_home.html', context)
+
+
+def room(request, pk):
+    room = Room.objects.get(id=pk)
+    room_messages = room.message_set.all()
+    participants = room.participants.all()
+
+    if request.method == 'POST':
+        message = Message.objects.create(
+            user=request.user,
+            room=room,
+            body=request.POST.get('body')
+        )
+        room.participants.add(request.user)
+        return redirect('room', pk=room.id)
+
+    context = {'room': room, 'room_messages': room_messages,
+               'participants': participants}
+    return render(request, 'base/room.html', context)

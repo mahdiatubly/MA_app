@@ -18,6 +18,10 @@
         <h2>{{lesson.user.username}}</h2>
         <h3>{{lesson.topic}}</h3>
         <h3>{{lesson.lesson}}</h3>
+        <div class="update">
+            <a href="{% url 'lesson_update' lesson.pk %}">Edit</a>
+            <a href="{% url 'lesson_delete' lesson.pk %}">Delete</a>
+        </div>
     </div>
 </body>
 </html>

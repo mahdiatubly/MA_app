@@ -1,11 +1,14 @@
 from django.contrib import admin
-from .models import Profile, Post, Comment
+from .models import Profile, Post, Comment, Message, Room, Topic
 from django.contrib.auth.models import User
 from django.contrib.auth.admin import UserAdmin as AuthUserAdmin
 
 admin.site.register(Profile)
 admin.site.register(Post)
 admin.site.register(Comment)
+admin.site.register(Room)
+admin.site.register(Message)
+admin.site.register(Topic)
 
 
 class ProfileInline(admin.StackedInline):
