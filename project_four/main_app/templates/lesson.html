@@ -7,8 +7,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
 </head>
@@ -18,10 +16,12 @@
         <h2>{{lesson.user.username}}</h2>
         <h3>{{lesson.topic}}</h3>
         <h3>{{lesson.lesson}}</h3>
+        {% if reqs.user == lesson.user %}
         <div class="update">
             <a href="{% url 'lesson_update' lesson.pk %}">Edit</a>
             <a href="{% url 'lesson_delete' lesson.pk %}">Delete</a>
         </div>
+        {% endif %}
     </div>
 </body>
 </html>

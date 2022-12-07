@@ -1,21 +1,8 @@
 {% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>M....</title>
-  <link rel="stylesheet" href="{% static 'styles/style.css' %}" />
-  <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"> -->
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
- 
-</head>
-<body>
-  <header class="header header--loggedIn">
+<header class="header header--loggedIn">
     <div class="container">
         <a href="{% url 'home' %}" class="header__logo">
-            <h1>M....</h1>
+            <h1>M.... <h4>EXTENSION</h4></h1>
         </a>
         <form class="header__search" method="GET" action="{% url 'home' %}">
             <label>
@@ -80,36 +67,3 @@
         </nav>
     </div>
 </header>
-  
-  {% if messages %}
-    <ul class="messages">
-        {% for message in messages %}
-        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
-        {% endfor %}
-    </ul>
-  {% endif %}
-
-  <main class="container">
-    {% block content %}
-    {% endblock %}
-  </main>
-  {% if user.is_authenticated %}
-  <div class="add_content">
-    <a href="/add"><i class="large material-icons" id="add_icon">add_circle</i></a>
-  </div>
-  {% else %}
-  <div class="add_content">
-    <a href="/signin"><i class="large material-icons" id="add_icon">add_circle</i></a>
-  </div>
-  {% endif %}
-
-  <div class="chat">
-    <a href="{% url 'chat' %}"><i class="large material-icons" id="add_icon">chat</i></a>
-  </div>
-
-  <footer class="page-footer #3f4156 grey darken-4">
-            
-  </footer>
-  <script src="{% static 'js/script.js' %}"></script>
-</body>
-</html>

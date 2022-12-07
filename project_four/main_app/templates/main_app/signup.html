@@ -6,15 +6,38 @@
       <strong>Error!</strong> {{error}}
     </div>
   {% endif %}
-
-  <h1>Sign Up</h1>
+  <main class="auth layout">
+    <div class="container">
+      <div class="layout__box">
+        <div class="layout__boxHeader">
+          <div class="layout__boxTitle">
+            <h3>SignUp</h3>
+          </div>
+        </div>
+    <div class="layout__body">
   <form action="/signup/" method="POST">
     {% csrf_token %}
-    <input type="text" name="first_name" placeholder="first_name"/>
-    <input type="text" name="last_name" placeholder="last_name"/>
-    <input type="text" name="username" placeholder="username"/>
-    <input type="password" name="password" placeholder="password"/>
-    <input type="email" name="email" placeholder="example@example.com"/>
-    <input type="submit" value="Sign Up"/>
+    <div class="form__group form__group">
+      <input type="text" name="first_name" placeholder="first_name"/>
+    </div>
+    <div class="form__group form__group">
+      <input type="text" name="last_name" placeholder="last_name"/>
+    </div>
+    <div class="form__group form__group">
+      <input type="text" name="username" placeholder="username"/>
+    </div>
+    <div class="form__group form__group">
+      <input type="password" name="password" placeholder="password"/>
+    </div>
+    <div class="form__group form__group">
+      <input type="email" name="email" placeholder="example@example.com"/>
+    </div>
+    <div class="form__group form__group">
+      <input type="submit" value="Sign Up"/>
+    </div>
   </form>
+  <div class="auth__action">
+    <p> Are you already have an account? <a href="{% url 'signup' %}">Sign In</a></p>
+  </div>
+</div>
 {% endblock %}
