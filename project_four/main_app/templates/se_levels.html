@@ -11,15 +11,34 @@
 
 </head>
 <body>
-    {% for lesson in content %}
-            <div class="lessons">
-                <a href="{% url 'lesson' lesson.id %}"><div class="lesson">
-                    <span class="auth">{{ lesson.user.username }}</span><br>
-                    <span class="title">{{ lesson.topic }}</span><br>
-                    <button class="less_intro">Start The Lesson</button>
-                </div> </a>
-            </div>
-    {% endfor %}
+    <div id="lessons_list">
+        {% for lesson in content %}
+                <!-- <div class="lessons">
+                    <a href="{% url 'lesson' lesson.id %}"><div class="lesson">
+                        <span class="auth">{{ lesson.user.username }}</span><br>
+                        <span class="title">{{ lesson.topic }}</span><br>
+                        <button class="less_intro">Start The Lesson</button>
+                    </div> </a>
+                </div> -->
+
+                <div class="roomListRoom" >
+                    <div class="roomListRoom__header">
+                        <a href="#" class="roomListRoom__author">
+                            <div class="avatar avatar--small">
+                                <img src="{{room.host.avatar.url}}" />
+                            </div>
+                            <span>@{{ lesson.user.username }}</span>
+                        </a>
+                        <div class="roomListRoom__actions">
+                            <span>{{lesson.created|timesince}} ago</span>
+                        </div>
+                    </div>
+                    <div class="roomListRoom__content">
+                        <a href="{% url 'lesson' lesson.id %}"class="search_results" > <span>{{ lesson.topic }}</span></a>
+                    </div>   
+                </div>
+        {% endfor %}
+    </div>
 </body>
 </html>
 {% endblock %}

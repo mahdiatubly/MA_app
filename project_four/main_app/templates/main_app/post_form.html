@@ -28,11 +28,11 @@
       <!-- Render the inputs inside of <tr>s & <td>s -->
       <div class="form__group">
         {{ form}}
+        </div>
+        <a class="btn btn--dark" href="{{request.META.HTTP_REFERER}}">Cancel</a>
+        <button class="btn btn--main" type="submit">Submit</button>
       </div>
-      <a class="btn btn--dark" href="{{request.META.HTTP_REFERER}}">Cancel</a>
-      <button class="btn btn--main" type="submit">Submit</button>
-    </div>
-      </form>
+  </form>
     </div>
   </div>
 </main>

@@ -29,9 +29,22 @@
     <div class="search_results">
         <h5>{{posts_count}} lessons available</h5>
         {% for loop in lessons%}
-            <li>
-                <a href="{% url 'lesson' loop.id %}"class="search_results">{{ loop.user }} <span>{{loop.topic}}</span></a>
-            </li>
+            <div class="roomListRoom">
+                <div class="roomListRoom__header">
+                    <a href="#" class="roomListRoom__author">
+                        <div class="avatar avatar--small">
+                            <img src="{{room.host.avatar.url}}" />
+                        </div>
+                        <span>@{{ loop.user }}</span>
+                    </a>
+                    <div class="roomListRoom__actions">
+                        <span>{{loop.created|timesince}} ago</span>
+                    </div>
+                </div>
+                <div class="roomListRoom__content">
+                    <a href="{% url 'lesson' loop.id %}"class="search_results" > <span>{{loop.topic}}</span></a>
+                </div>   
+            </div>
         {% endfor %}
     </div>
 </body>

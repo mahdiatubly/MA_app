@@ -1,5 +1,5 @@
 from django.forms import ModelForm
-from .models import Post, Room
+from .models import Post, Room, Profile
 from django.contrib.auth.forms import UserCreationForm
 
 
@@ -24,7 +24,7 @@ class RoomForm(ModelForm):
 
 # class UserForm(ModelForm):
 #     class Meta:
-#         model = User
+#         model = Profile
 #         fields = ['avatar', 'name', 'username', 'email', 'bio']
 
 

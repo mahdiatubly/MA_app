@@ -333,9 +333,9 @@ def userProfile(request, pk):
     return render(request, 'main_app/profile.html', context)
 
 
-@login_required(login_url='login')
-def updateUser(request):
-    pass
+# @login_required(login_url='login')
+# def updateUser(request):
+#     pass
 #     user = request.user
 #     form = UserForm(instance=user)
 

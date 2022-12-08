@@ -4,7 +4,7 @@
         <a href="{% url 'home' %}" class="header__logo">
             <h1>M.... <h4>EXTENSION</h4></h1>
         </a>
-        <form class="header__search" method="GET" action="{% url 'home' %}">
+        <form class="header__search" method="GET" action="{% url 'chat' %}">
             <label>
                 <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
                     <title>search</title>
@@ -21,7 +21,7 @@
             <!-- Logged In -->
             {% if request.user.is_authenticated %}
             <div class="header__user">
-                <a href="{% url 'update-user' %}">
+                <a href="#">
                     <div class="avatar avatar--medium active">
                         <img src="{{request.user.avatar.url}}" />
                     </div>
@@ -44,7 +44,7 @@
             {% endif %}
 
             <div class="dropdown-menu">
-                <a href="{% url 'update-user' %}" class="dropdown-link"><svg version="1.1"
+                <a href="#" class="dropdown-link"><svg version="1.1"
                         xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
                         <title>tools</title>
                         <path

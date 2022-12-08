@@ -1195,6 +1195,7 @@ a {
   position: fixed;
   right: 0px; bottom: 0px;
   padding: 5%;
+  size: 5%;
 }
 
 .search_box{
@@ -1228,4 +1229,8 @@ a {
 
 #home_title{
   margin-left: 2%;
+}
+
+#lessons_list{
+  margin-top: 3%;
 }

@@ -43,6 +43,8 @@ class Post(models.Model):
     upvotes = models.IntegerField(blank=True, null=True, editable=True)
     downvotes = models.IntegerField(blank=True, null=True, editable=True)
     updates = models.TextField(blank=True, null=True, editable=True)
+    updated = models.DateTimeField(auto_now=True)
+    created = models.DateTimeField(auto_now_add=True)
 
     def get_absolute_url(self):
         return reverse('', kwargs={'pk': self.id})
